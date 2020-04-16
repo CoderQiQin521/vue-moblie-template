@@ -11,6 +11,7 @@ module.exports = {
       title: 'scaffold-vue'
     }
   },
+  productionSourceMap: false,
   devServer: {
     proxy: {
       '/api': {

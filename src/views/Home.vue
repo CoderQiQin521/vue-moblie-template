@@ -1,5 +1,8 @@
 <template>
-  <div class="home">home</div>
+  <div class="home">
+    home
+    <div class="box"></div>
+  </div>
 </template>
 
 <script>
@@ -15,4 +18,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.home {
+  font-size: 36px;
+}
+.box {
+  width: 750px;
+  height: 750px;
+  background-color: aquamarine;
+}
 </style>
