@@ -1,4 +1,6 @@
 # scaffold-vue
+> 默认是手机端项目,开发中根据750px设计图直接写px单位,自动适配好rem.
+如果是web端,删除`amfe-flexible`,`postcss-px2rem`两个依赖即可
 
 ## Project setup
 ```
