@@ -24,6 +24,6 @@ export default {
 .box {
   width: 750px;
   height: 750px;
-  background-color: aquamarine;
+  background-color: pink;
 }
 </style>

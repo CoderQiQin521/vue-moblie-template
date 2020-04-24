@@ -1,0 +1,28 @@
+// 背景图
+.bg-img(@url,@size: cover,@position: center,@repeat:no-repeat) {
+  background-image: url(@url);
+  background-size: @size;
+  background-position: @position;
+  background-repeat: @repeat;
+}
+
+// 水平垂直居中
+.all-center(vh, @w, @h) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: @w;
+  height: @h;
+  margin-left: -(@w / 2);
+  margin-top: -(@h / 2);
+}
+
+// 文本溢出省略号显示 (多行)
+.mutiple-overflow(@line: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
