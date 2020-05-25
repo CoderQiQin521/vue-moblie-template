@@ -1,24 +1,25 @@
 module.exports = {
   lintOnSave: false,
   css: {
-    sourceMap: true
+    sourceMap: true,
   },
   pages: {
     index: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      filename: 'index.html',
-      title: 'scaffold-vue'
-    }
+      entry: "src/main.js",
+      template: "public/index.html",
+      filename: "index.html",
+      title: "vue-template",
+    },
   },
   productionSourceMap: false,
   devServer: {
+    disableHostCheck: true,
     proxy: {
-      '/api': {
-        target: '<url>',
+      "/api": {
+        target: "<url>",
         ws: true,
-        changeOrigin: true
-      }
-    }
-  }
+        changeOrigin: true,
+      },
+    },
+  },
 };
