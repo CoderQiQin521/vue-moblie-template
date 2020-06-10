@@ -1,0 +1,128 @@
+// 背景图片
+@mixin bg-image($url, $size: contain, $position: center) {
+  background-image: url($url);
+  background-size: $size;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+// 宽高
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                     布局                                     */
+/* -------------------------------------------------------------------------- */
+
+// 清浮动
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin hidden() {
+  display: none !important;
+  visibility: hidden;
+}
+
+// todo:
+//! 水平垂直居中
+//? 水平垂直居中
+//* 水平垂直居中
+// 水平垂直居中
+// FIXME: 水平垂直居中
+// TODO: 水平垂直居中
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+}
+
+@mixin flex($type) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @if $type == center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// 三角形
+%triangle-basic {
+  content: '';
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+@mixin triangle($direction, $size, $borderColor) {
+  @extend %triangle-basic;
+
+  @if $direction == top {
+    border-bottom: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  } @else if $direction == right {
+    border-left: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  } @else if $direction == bottom {
+    border-top: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
+  } @else if $direction == left {
+    border-right: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
+  }
+}
+
+// 元素可以设置宽度才可应用省略号
+%ellipsis-basic {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin ellipsis() {
+  @extend %ellipsis-basic;
+}
+@mixin ellipsis-lines($line: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+@mixin black-alpha($bgcolor: rgba(0, 0, 0, 0.7)) {
+  background-color: $bgcolor;
+  color: #fff;
+}
+
+// 最小高度
+@mixin min-height($height) {
+  min-height: $height;
+  height: auto !important;
+}
+
+@mixin fixed($pos: bottom) {
+  position: fixed;
+  left: 0;
+  right: 0;
+  @if $pos == bottom {
+    bottom: 0;
+  } @else if $pos == top {
+    top: 0;
+  }
+}
