@@ -1,25 +1,27 @@
 import axios from "axios";
+// 文档: https://www.kancloud.cn/yunye/axios/234845
 
 const http = axios.create({
   baseURL: "",
-  timeout: 6000,
+  timeout: 6000
 });
 
 http.interceptors.request.use(
-  function (config) {
+  config => {
     let token = localStorage.getItem("token");
     if (token) {
+      // 与后端约定格式
       config.headers["Authorization"] = "Bearer " + (token || "");
     }
     return config;
   },
-  function (err) {
+  err => {
     return err;
   }
 );
 
 http.interceptors.response.use(
-  function (response) {
+  response => {
     if (process.env.NODE_ENV === "development") {
       console.log(`接口地址: ${response.config.url}`, response.data);
     }
@@ -29,7 +31,7 @@ http.interceptors.response.use(
     }
     return response.data;
   },
-  function (err) {
+  err => {
     return err;
   }
 );
