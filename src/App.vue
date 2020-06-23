@@ -4,5 +4,5 @@
   </div>
 </template>
 
-<style lang="less">
+<style lang="scss">
 </style>

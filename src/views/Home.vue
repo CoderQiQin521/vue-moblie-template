@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .home {
   font-size: 36px;
 }
