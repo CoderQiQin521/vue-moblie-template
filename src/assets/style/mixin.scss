@@ -1,3 +1,5 @@
+@import './extend.scss';
+
 // 背景图片
 @mixin bg-image($url, $size: contain, $position: center) {
   background-image: url($url);
@@ -58,12 +60,7 @@
 }
 
 // 三角形
-%triangle-basic {
-  content: '';
-  height: 0;
-  width: 0;
-  overflow: hidden;
-}
+
 @mixin triangle($direction, $size, $borderColor) {
   @extend %triangle-basic;
 
@@ -86,16 +83,10 @@
   }
 }
 
-// 元素可以设置宽度才可应用省略号
-%ellipsis-basic {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 @mixin ellipsis() {
   @extend %ellipsis-basic;
 }
+
 @mixin ellipsis-lines($line: 2) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
