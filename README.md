@@ -14,3 +14,17 @@
 `git remote add orgin git@gitee.com:CoderQiQin/scaffold-vue.git`
 
 `git remote set-url origin URL`
+
+`git tag onlinetest-v1.0.0`
+
+`git push --tag`
+
+## 依赖
+
+- [tailwindcss](https://www.tailwindcss.cn/)
+- [licia](https://licia.liriliri.io/docs.html)
+
+## TODO
+
+- vue.conifg.js&postcss.config.js 配置 tailwindcss
+- vw & postcss 适配
