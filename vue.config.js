@@ -2,10 +2,10 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-07-04 11:58:08
+ * @Last Modified time: 2020-07-04 14:19:17
  * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
- * CDN:
+ * CDN: 生产环境使用cdn资源
  * webpack-bundle-analyzer: 资源分析
  * compression-webpack-plugin: 开启gzip
  * uglifyjs-webpack-plugin: 生产环境清除console
@@ -14,6 +14,17 @@ const { resolve } = require("path");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const UglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 const isProduction = process.env.NODE_ENV === "production";
+
+let cdn = {
+  css: [],
+  js: [
+    "https://uufefile.uupt.com/CDN/js/babel-polyfill.min.js",
+    "https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js",
+    "https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js",
+    "https://unpkg.com/vuex@3.1.2/dist/vuex.min.js",
+    "https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"
+  ]
+};
 
 module.exports = {
   css: {
@@ -31,14 +42,15 @@ module.exports = {
       }
     }
   },
-  pages: {
-    index: {
-      entry: "src/main.js",
-      template: "public/index.html", // 模板来源
-      filename: "index.html",
-      title: "vue-template"
-    }
-  },
+  // pages: {
+  //   index: {
+  //     entry: "src/main.js"
+  //     // template: "public/index.html", // 模板来源
+  //     // filename: "index.html",
+  //     // title: "vue-template",
+  //     // cdn: {}
+  //   }
+  // },
   lintOnSave: false,
   filenameHashing: true, //文件名中包含了 hash 以便更好的控制缓存,默认true
   outputDir: process.env.VUE_APP_OUTPUT_DIR,
@@ -59,13 +71,21 @@ module.exports = {
     // 配置别名(弊端:无法直接定位到文件内)
     config.resolve.alias.set("@", resolve("src"));
 
+    // 参考链接https://cli.vuejs.org/zh/guide/webpack.html#修改插件选项
+    if (isProduction) {
+      config.plugin("html").tap(args => {
+        args[0].cdn = cdn;
+        return args;
+      });
+    }
+
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
     types.forEach(type => addStyleResource(config.module.rule("scss").oneOf(type)));
   },
   configureWebpack: config => {
     if (isProduction) {
+      // 排除打包文件
       Object.assign(config, {
-        // 排除打包文件
         externals: {
           vue: "Vue",
           "vue-router": "VueRouter",
