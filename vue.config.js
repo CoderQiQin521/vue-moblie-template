@@ -2,7 +2,7 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-07-04 10:11:27
+ * @Last Modified time: 2020-07-04 11:15:44
  * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
  * CDN:
@@ -12,6 +12,8 @@
  */
 const { resolve } = require("path");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
+const UglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
+const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
   css: {
@@ -61,11 +63,14 @@ module.exports = {
     types.forEach(type => addStyleResource(config.module.rule("scss").oneOf(type)));
   },
   configureWebpack: config => {
-    if (process.env.NODE_ENV === "production") {
+    if (isProduction) {
       Object.assign(config, {
         // 排除打包文件
         externals: {
           vue: "Vue",
+          "vue-router": "VueRouter",
+          vuex: "Vuex",
+          moment: "momoent",
           axios: "axios",
           jquery: "jquery"
         }
@@ -84,6 +89,17 @@ module.exports = {
           threshold: 10240, // 对超过10k文件进行压缩
           minRatio: 0.8,
           deleteOriginalAssets: false // 是否删除源文件
+        }),
+        new UglifyjsWebpackPlugin({
+          uglifyOptions: {
+            compress: {
+              // warnings: false,
+              drop_debugger: true,
+              drop_console: true
+            }
+          },
+          sourceMap: false,
+          parallel: true
         })
       );
     }
