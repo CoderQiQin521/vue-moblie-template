@@ -1,14 +1,15 @@
-const path = require("path");
 const { series, parallel, src, dest } = require("gulp");
+const path = require("path");
 const gulpzip = require("gulp-zip");
 const del = require("del");
 const dayjs = require("dayjs");
+const projectName = "test.uupt.com";
 
 exports.build = function build() {
   del(["*.zip"]);
 
   console.log("打包完成");
   return src("dist/**")
-    .pipe(gulpzip(`test.123.com-${dayjs().format("YYYY-MM-DD HH-mm-ss")}.zip`))
+    .pipe(gulpzip(`${projectName}-qiqin-${dayjs().format("YYYY-MM-DD HH-mm-ss")}.zip`))
     .pipe(dest("./"));
 };
