@@ -13,12 +13,13 @@ module.exports = {
       title: "vue-template"
     }
   },
+  outputDir: process.env.VUE_APP_OUTPUT_DIR,
   productionSourceMap: false,
   devServer: {
     disableHostCheck: true,
     proxy: {
       "/api": {
-        target: "<url>",
+        target: process.env.VUE_APP_BASE_URL,
         ws: true,
         changeOrigin: true
       }
@@ -27,6 +28,22 @@ module.exports = {
   chainWebpack: config => {
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
     types.forEach(type => addStyleResource(config.module.rule("scss").oneOf(type)));
+  },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === "production") {
+      Object.assign(config, {
+        // 排除打包文件
+        externals: {
+          vue: "Vue",
+          moment: "moment"
+        }
+      });
+      if (process.env.npm_config_report) {
+        // 打包后模块大小分析  npm run build --report
+        const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+        config.plugins.push(new BundleAnalyzerPlugin());
+      }
+    }
   }
 };
 
