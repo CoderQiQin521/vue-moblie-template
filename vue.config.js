@@ -2,7 +2,7 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-07-04 11:15:44
+ * @Last Modified time: 2020-07-04 11:58:08
  * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
  * CDN:
@@ -46,8 +46,8 @@ module.exports = {
   devServer: {
     // disableHostCheck: true,
     proxy: {
-      "/api": {
-        target: process.env.VUE_APP_BASE_URL,
+      VUE_APP_BASE_URL: {
+        target: process.env.VUE_APP_PROXY,
         ws: true,
         changeOrigin: true
       }

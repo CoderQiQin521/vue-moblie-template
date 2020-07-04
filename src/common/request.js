@@ -1,8 +1,11 @@
 // 文档: https://www.kancloud.cn/yunye/axios/234845
 import axios from "axios";
+const isProduction = process.env.NODE_ENV === "production";
+console.log("是否是生产环境", isProduction);
+console.log(process.env);
 
 const http = axios.create({
-  baseURL: "",
+  baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 6000
 });
 
