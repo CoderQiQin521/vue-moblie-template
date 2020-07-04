@@ -7,12 +7,15 @@
 
 <script>
 // @ is an alias to /src
+import { http } from "../common/request";
 export default {
   name: "Home",
   data() {
     return {};
   },
-  created() {},
+  async created() {
+    await this.$api.testGet();
+  },
   methods: {}
 };
 </script>

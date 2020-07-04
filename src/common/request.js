@@ -1,5 +1,5 @@
-import axios from "axios";
 // 文档: https://www.kancloud.cn/yunye/axios/234845
+import axios from "axios";
 
 const http = axios.create({
   baseURL: "",
