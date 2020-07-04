@@ -15,6 +15,7 @@ export default {
   },
   async created() {
     await this.$api.testGet();
+    await this.$api.testGet();
   },
   methods: {}
 };

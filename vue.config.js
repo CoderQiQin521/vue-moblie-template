@@ -2,13 +2,14 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-07-04 09:54:44
+ * @Last Modified time: 2020-07-04 10:11:27
+ * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
+ * CDN:
  * webpack-bundle-analyzer: 资源分析
  * compression-webpack-plugin: 开启gzip
  * uglifyjs-webpack-plugin: 生产环境清除console
  */
-// 文档: https://cli.vuejs.org/zh/
 const { resolve } = require("path");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
@@ -51,16 +52,15 @@ module.exports = {
     }
   },
   chainWebpack: config => {
+    // Webpack配置另一种写法—— webpack-chain（链式操作）
+
+    // 配置别名(弊端:无法直接定位到文件内)
+    config.resolve.alias.set("@", resolve("src"));
+
     const types = ["vue-modules", "vue", "normal-modules", "normal"];
     types.forEach(type => addStyleResource(config.module.rule("scss").oneOf(type)));
   },
   configureWebpack: config => {
-    // resolve: {
-    //   alias: {
-    //   }
-    // }
-    // 配置别名(弊端:无法直接定位到文件内)
-
     if (process.env.NODE_ENV === "production") {
       Object.assign(config, {
         // 排除打包文件

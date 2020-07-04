@@ -23,7 +23,7 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   response => {
     if (process.env.NODE_ENV === "development") {
-      console.log(`接口地址: ${response.config.url}`, response.data);
+      console.log(`%c 接口地址: ${response.config.url}`, "background:yellow", response.data);
     }
     if (response.data.code !== 0) {
       // todo: toast提醒
