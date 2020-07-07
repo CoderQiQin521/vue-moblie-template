@@ -6,6 +6,9 @@ console.log(process.env);
 
 const http = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
+  headers: {
+    post: ""
+  },
   timeout: 6000
 });
 

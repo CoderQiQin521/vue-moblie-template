@@ -3,14 +3,17 @@ const path = require("path");
 const gulpzip = require("gulp-zip");
 const del = require("del");
 const dayjs = require("dayjs");
+
 const projectName = "test.uupt.com";
+const author = "qiqin";
+const date = dayjs().format("YYYY-MM-DD HH-mm-ss");
 
 function zip() {
   del(["*.zip"]);
 
   console.log("打包完成");
   return src("dist/**")
-    .pipe(gulpzip(`${projectName}-qiqin-${dayjs().format("YYYY-MM-DD HH-mm-ss")}.zip`))
+    .pipe(gulpzip(`${projectName}-${author}-${date}.zip`))
     .pipe(dest("./"));
 }
 

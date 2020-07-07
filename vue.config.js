@@ -2,7 +2,7 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-07-04 14:19:17
+ * @Last Modified time: 2020-07-07 16:32:58
  * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
  * CDN: 生产环境使用cdn资源
@@ -69,7 +69,7 @@ module.exports = {
     // Webpack配置另一种写法—— webpack-chain（链式操作）
 
     // 配置别名(弊端:无法直接定位到文件内)
-    config.resolve.alias.set("@", resolve("src"));
+    config.resolve.alias.set("@", resolve("src")).set("common", resolve("src/common"));
 
     // 参考链接https://cli.vuejs.org/zh/guide/webpack.html#修改插件选项
     if (isProduction) {
