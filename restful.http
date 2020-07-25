@@ -1,6 +1,6 @@
 @url= http://127.0.0.1:3000/api
 ###
-POST {url}/login
+POST {{url}}/login
 Content-Type: application/json;charset=utf-8
 
 {
@@ -9,4 +9,4 @@ Content-Type: application/json;charset=utf-8
 }
 
 ### 获取所有用户
-GET {url}/user
+GET {{url}}/user
