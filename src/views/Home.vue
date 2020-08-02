@@ -14,10 +14,27 @@ export default {
     return {};
   },
   async created() {
-    await this.$api.testGet();
-    await this.$api.testGet();
+    await this.fetch();
+    console.log(1);
+
+    let [err, data] = await this.$api.testAsync;
+    console.log("err: ", err);
   },
-  methods: {}
+  methods: {
+    async fetch() {
+      let [err, data] = await this.$api
+        .testGet({
+          name: "123",
+          age: 43
+        })
+        .then(res => [null, res])
+        .catch(err => [err, null])
+        .finally(() => {});
+      if (err) {
+        console.log("业务异常: ", err);
+      }
+    }
+  }
 };
 </script>
 
