@@ -26,8 +26,7 @@ let errorFn = status => {
   Toast.fail("请连接互联网！");
 };
 
-// axios.post全局默认值
-// axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+// axios.post全局默认值 "application/x-www-form-urlencoded"
 const http = axios.create({
   // 前后端同站点部署,相对路径,不同站点需要配置baseURL
   baseURL: process.env.VUE_APP_BASE_URL,
