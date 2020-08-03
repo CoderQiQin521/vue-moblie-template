@@ -2,7 +2,7 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-08-02 12:40:07
+ * @Last Modified time: 2020-08-03 16:08:22
  * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
  * CDN: 生产环境使用cdn资源
@@ -34,8 +34,9 @@ module.exports = {
       css: {},
       postcss: {
         plugins: [
-          require("postcss-px2rem")({
+          require("postcss-px2rem-exclude")({
             // todo: 排除UI框架可以使用postcss-px2rem-exclude
+            exclude: /node_modules/,
             remUnit: 75 // 不需要转换rem的单位Px或者PX
           })
         ]
