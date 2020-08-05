@@ -16,3 +16,19 @@ export const random = (min, max) => Math.floor(Math.random() * (max - min + 1) +
  * @returns {boolean}
  */
 export const isMobile = phone => /^1[0-9]{10}$/.test(phone);
+
+/**
+ * async/await异常方式捕获
+ * @param {function} promise 传入promise函数
+ * @return {array}
+ * ```js
+ * let [err, data] = await asyncWrap(this.$api.testPost());
+ * ```
+ *
+ */
+export const asyncWrap = promise => {
+  if (!promise) {
+    throw "必须传入一个promise函数";
+  }
+  return promise.then(res => [null, res]).catch(err => [err, null]);
+};
