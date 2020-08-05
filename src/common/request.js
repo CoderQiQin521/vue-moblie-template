@@ -57,7 +57,6 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   response => {
     let { config, data } = response;
-    console.log("config: ", config);
     if (isDev) {
       console.group(`${config.method.toLocaleUpperCase()}接口: ${config.url}`);
       console.log(data);
