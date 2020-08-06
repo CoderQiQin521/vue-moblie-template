@@ -58,15 +58,15 @@ http.interceptors.response.use(
   response => {
     let { config, data } = response;
     if (isDev) {
-      console.group(`接口地址: ${config.url}`);
+      console.group(`${config.method.toLocaleUpperCase()}接口: ${config.url}`);
       console.log(data);
       // console.log(`%c 接口地址: ${response.config.url}`, "background:yellow", response.data);
       console.groupEnd();
     }
     // 业务层异常
     if (data.code !== 0) {
-      // todo: 业务异常toast提醒,还需配置显示/隐藏flag
-      Toast.fail(data.msg);
+      // todo: 业务异常toast提醒,还需配置显示/隐藏flag,暂时在headers里控制
+      config.headers.notoast || Toast.fail(data.msg);
       return Promise.reject(data);
     }
     return data;

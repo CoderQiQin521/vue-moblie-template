@@ -8,16 +8,21 @@
 <script>
 // @ is an alias to /src
 import { http } from "../common/request";
+import { asyncWrap } from "../common/utils";
 export default {
   name: "Home",
   data() {
     return {};
   },
   async created() {
-    await this.fetch();
-    console.log(1);
-
-    let [err, data] = await this.$api.testAsync;
+    // await this.fetch();
+    // console.log(1);
+    // await asyncWrap();
+    let [err, data] = await asyncWrap(
+      this.$api.testPost({
+        name: "123"
+      })
+    );
     console.log("err: ", err);
   },
   methods: {
