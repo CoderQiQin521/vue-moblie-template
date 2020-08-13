@@ -3,10 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "amfe-flexible";
-import * as api from "./global/api";
-import "vant/lib/index.css";
-import "./assets/style/core.scss";
+import * as api from "./global/apis";
+// import "vant/lib/index.css";
 // import "./assets/style/tailwind.css";
+import "./assets/style/core.scss";
 
 Vue.prototype.$api = api;
 Vue.config.productionTip = false;

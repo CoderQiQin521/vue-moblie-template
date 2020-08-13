@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/home/Home.vue";
 
 Vue.use(VueRouter);
 
@@ -32,6 +32,7 @@ const router = new VueRouter({
   routes
 });
 
+// TODO:貌似不用导航守卫也可以自动设置title
 router.beforeEach((to, from, next) => {
   let { title } = to.meta;
   title && (document.title = title);
