@@ -1,8 +1,7 @@
 // 文档: https://www.kancloud.cn/yunye/axios/234845
 import axios from "axios";
 import { Toast } from "vant";
-import { isPro, isDev } from "../common/env";
-console.log("是否是生产环境", isDev);
+import { isPro, isDev } from "./env";
 
 let errorFn = status => {
   // 完整错误码参照koa2官网
@@ -77,4 +76,10 @@ http.interceptors.response.use(
   }
 );
 
-export default http;
+// 本地mock数据
+const mock = axios.create({
+  baseURL: "http://127.0.0.1:3000",
+  timeout: 60000
+});
+
+export default { http, mock };
