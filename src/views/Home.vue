@@ -9,6 +9,7 @@
 // @ is an alias to /src
 import { http } from "../common/request";
 import { asyncWrap } from "../common/utils";
+import homeMethod from './home'
 export default {
   name: "Home",
   data() {
@@ -18,6 +19,7 @@ export default {
     // await this.fetch();
     // console.log(1);
     // await asyncWrap();
+    this.hello(this)
     let [err, data] = await asyncWrap(
       this.$api.testPost({
         name: "123"
@@ -25,21 +27,22 @@ export default {
     );
     console.log("err: ", err);
   },
-  methods: {
-    async fetch() {
-      let [err, data] = await this.$api
-        .testGet({
-          name: "123",
-          age: 43
-        })
-        .then(res => [null, res])
-        .catch(err => [err, null])
-        .finally(() => {});
-      if (err) {
-        console.log("业务异常: ", err);
-      }
-    }
-  }
+  methods: homeMethod
+  // {
+  //   async fetch() {
+  //     let [err, data] = await this.$api
+  //       .testGet({
+  //         name: "123",
+  //         age: 43
+  //       })
+  //       .then(res => [null, res])
+  //       .catch(err => [err, null])
+  //       .finally(() => {});
+  //     if (err) {
+  //       console.log("业务异常: ", err);
+  //     }
+  //   }
+  // }
 };
 </script>
 
