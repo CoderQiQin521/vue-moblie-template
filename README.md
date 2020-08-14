@@ -1,7 +1,6 @@
-# 简介
+## 简介
 
-> 默认是手机端项目,开发中根据 750px 设计图直接写 px 单位,自动适配好 rem.
-> 如果是 web 端,删除`amfe-flexible`,`postcss-px2rem`两个依赖即可
+> 移动端项目模版
 
 ## 特点
 
@@ -9,18 +8,24 @@
 2. mock 数据(无线上数据也可以 debug)
 3. api 模块化管理
 4. 常用 utils
-5. 加密模块
+5. 请求传参加密
 6. 单元测试
 7. restclient 接口测试
+8. tailwindcss
+9. px2rem 自动适配
 
-## TODO
+## 提交规范
 
-- vue 打包配置线测环境-ab 环境-正式环境
-- vue.conifg.js&postcss.config.js 配置 tailwindcss
-- vw & postcss 适配
-- Event Bus
-- deploy
-- commitizen
+1. feat: 新功能(feature)
+2. fix: 修复 bug
+3. docs: 文档更新
+4. style: 代码格式化(不影响代码含义)
+5. refactor: 重构,不修复 bug 也不添加新特性
+6. perf: 提高性能的代码更改 test: 增加测试
+7. build: 影响构建系统或外部依赖(gulp,npm)
+8. ci: 更改 CI 配置文件和脚本
+9. chore: 不修改 src 或测试文件的修改
+10. revert: 恢复之前的提交
 
 ## 常用命令
 
@@ -42,3 +47,11 @@
 
 - [tailwindcss](https://www.tailwindcss.cn/)
 - [licia](https://licia.liriliri.io/docs.html)
+
+## TODO
+
+- vue 打包配置线测环境-ab 环境-正式环境
+- vw & postcss 适配
+- Event Bus
+- deploy
+- commitizen
