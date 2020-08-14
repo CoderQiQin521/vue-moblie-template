@@ -1,8 +1,15 @@
 // 文档: https://www.kancloud.cn/yunye/axios/234845
 import axios from "axios";
-import { Toast } from "vant";
+import crypto from "./crypto";
+import { util, uPop } from "@plugin/tool-common";
 import { isPro, isDev } from "./env";
-import { mockServer, mockHost } from "@/global/config";
+import { mockServer, mockHost, openCrypto, openApiLog } from "@/global/config";
+import { unSerialize } from "./utils/utils";
+
+const token = util.Request("token");
+if (!token) {
+  uPop.msg("没有获取token");
+}
 
 let errorFn = status => {
   // 完整错误码参照koa2官网
@@ -20,17 +27,26 @@ let errorFn = status => {
     505: "HTTP版本不受支持(505)"
   };
   if (status) {
-    Toast.fail(map[status] || `连接出错(${status})!`);
+    uPop.msg(map[status] || `连接出错(${status})!`);
     return;
   }
-  Toast.fail("请连接互联网！");
+  uPop.msg("请连接互联网！");
 };
 
 // axios.post全局默认值 "application/x-www-form-urlencoded"
+// axios.defaults.headers.post["Content-Type"] = "application/json";
 export const http = axios.create({
   // 前后端同站点部署,相对路径,不同站点需要配置baseURL
   baseURL: mockServer ? mockHost : process.env.VUE_APP_BASE_URL,
   timeout: 6000,
+  // transformRequest: [
+  //   function(data) {
+  //     console.log("data: ", data);
+  //     // `transformRequest` 允许在向服务器发送前，修改请求数据
+  //     // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
+  //     return JSON.stringify(data);
+  //   }
+  // ],
   validateStatus: function(status) {
     // 网络层异常: 监听http错误码处理
     if (!(status >= 200 && status < 300)) {
@@ -42,10 +58,25 @@ export const http = axios.create({
 
 http.interceptors.request.use(
   config => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      // 与后端约定格式
-      config.headers["Authorization"] = "Bearer " + (token || "");
+    let { url, method, params, data } = config;
+    // let token = localStorage.getItem("token");
+    // if (token) {
+    //   // 与后端约定格式
+    //   config.headers["Authorization"] = "Bearer " + (token || "");
+    // }
+
+    // TODO: RSA加密 最长30 GET需要截取处理
+    if (mockServer) {
+      if (openCrypto) {
+        if (method === "get") {
+          url += `?${crypto(`token=${token}${params ? "&" + unSerialize(params) : ""}`)}`;
+          config.url = url;
+          config.params = null;
+        } else {
+          data.token = token;
+          config.data = crypto(data);
+        }
+      }
     }
     return config;
   },
@@ -57,16 +88,14 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   response => {
     let { config, data } = response;
-    if (isDev) {
+    if (isDev && openApiLog) {
       console.group(`${config.method.toLocaleUpperCase()}接口: ${config.url}`);
       console.log(data);
-      // console.log(`%c 接口地址: ${response.config.url}`, "background:yellow", response.data);
       console.groupEnd();
     }
     // 业务层异常
     if (data.code !== 0) {
-      // todo: 业务异常toast提醒,还需配置显示/隐藏flag,暂时在headers里控制
-      config.headers.notoast || Toast.fail(data.msg);
+      config.headers.notoast || uPop.msg(data.msg);
       return Promise.reject(data);
     }
     return data;
@@ -77,10 +106,4 @@ http.interceptors.response.use(
   }
 );
 
-// 本地mock数据
-export const mock = axios.create({
-  baseURL: "http://127.0.0.1:3000",
-  timeout: 60000
-});
-
-// export default { http, mock };
+export default http;

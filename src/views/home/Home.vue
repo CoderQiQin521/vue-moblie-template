@@ -1,5 +1,5 @@
 <template>
-  <div>Home Page</div>
+  <div></div>
 </template>
 <script>
 // @ is an alias to /src
@@ -12,13 +12,19 @@ export default {
     return {};
   },
   async created() {
-    // await this.fetch();
-    // console.log(1);
-    // await asyncWrap();
     let res = await this.$api.testUser()
 
+    let po = await this.$api.testPost({
+      name: 23322432332243233224323322432332243233224323322432332243233224323322432332243,
+      age: "sdfgvsafsdfsdafdsafdsfasdfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      password: '5435h34jjk345hjhjZ'
+    })
+
     let [err, data] = await asyncWrap(
-      this.$api.testGet()
+      this.$api.testGet({
+        name: '齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323',
+        age:4
+      })
     );
     console.log("err: ", err);
   },

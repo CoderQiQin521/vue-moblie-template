@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-// 使用别名优点: 文件移动目录层级无需修改路径,缺点: 无法一部进入定义文件查看源码
+// 使用别名优点: 文件移动目录层级无需修改路径,缺点: 无法一部进入定义文件查看源码且没有jsdoc提示
 import '@/global/version.js'
 import { http } from "../global/request";
 import { asyncWrap } from "@/global/utils/utils";

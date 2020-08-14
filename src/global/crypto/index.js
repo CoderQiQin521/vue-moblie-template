@@ -6,6 +6,11 @@ import JSEncrypt from "./ras_plugin/jsencrypt.js";
 let publicKey =
   "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnEgc8cLBmtuMu1bUO5WQBNnt40x15kxY7LYaSWrRpGJODjYEfa3Xds15ixoxWYS6cgYYWvmynMfmVoe5V16jHeAN5oeZ1n2PCYcjxDJYCCkTPjRG8hL1YIluhPMGydvjug+tnRGC7eENdjqIZxsXjwYONOCX+9VJd7g4fi/UqOwIDAQAB"; // 服务端提供
 
+/**
+ * RSA to Java
+ * @param { string } val 加密字符串 `token=xxx&type=1`
+ * @return { string }
+ */
 let RAS_JM = val => {
   var encrypt = new JSEncrypt();
   encrypt.setPublicKey(publicKey);

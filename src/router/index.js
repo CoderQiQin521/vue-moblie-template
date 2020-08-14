@@ -32,7 +32,6 @@ const router = new VueRouter({
   routes
 });
 
-// TODO:貌似不用导航守卫也可以自动设置title
 router.beforeEach((to, from, next) => {
   let { title } = to.meta;
   title && (document.title = title);

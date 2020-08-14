@@ -32,3 +32,18 @@ export const asyncWrap = promise => {
   }
   return promise.then(res => [null, res]).catch(err => [err, null]);
 };
+
+/**
+ * 反序列化
+ * @param { object } object
+ */
+export const unSerialize = object => {
+  let arr = [];
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      const element = object[key];
+      arr.push(encodeURIComponent(key) + "=" + encodeURIComponent(element));
+    }
+  }
+  return arr.join();
+};

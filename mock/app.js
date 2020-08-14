@@ -2,8 +2,10 @@ const Koa = require("koa");
 const app = new Koa();
 const cors = require("@koa/cors");
 const router = require("koa-router")();
+const bodyParser = require("koa-bodyparser");
 
 app.use(cors());
+app.use(bodyParser());
 
 const mockData = require("./mockData");
 router.get("/", async ctx => {
@@ -12,6 +14,15 @@ router.get("/", async ctx => {
 
 router.get("/user", async ctx => {
   ctx.body = mockData.user;
+});
+
+router.post("/a", async ctx => {
+  console.log(ctx.request.body);
+  ctx.body = await {
+    code: 0,
+    msg: "提示信息",
+    data: 1
+  };
 });
 
 app.use(router.routes(), router.allowedMethods());
