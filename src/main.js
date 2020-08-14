@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "amfe-flexible";
-import * as api from "./global/apis";
+import * as api from "./apis";
 // import "vant/lib/index.css";
 // import "./assets/style/tailwind.css";
 import "./assets/style/core.scss";

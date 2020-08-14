@@ -1,10 +1,19 @@
 const Koa = require("koa");
 const app = new Koa();
+const cors = require("@koa/cors");
 const router = require("koa-router")();
-const order = require("./index");
+
+app.use(cors());
+
+const mockData = require("./mockData");
 router.get("/", async ctx => {
-  ctx.body = order;
+  ctx.body = mockData.order;
 });
+
+router.get("/user", async ctx => {
+  ctx.body = mockData.user;
+});
+
 app.use(router.routes(), router.allowedMethods());
 var server = app.listen(3000, "localhost", function() {
   var host = server.address().address;

@@ -2,6 +2,7 @@
 import axios from "axios";
 import { Toast } from "vant";
 import { isPro, isDev } from "./env";
+import { mockServer, mockHost } from "@/global/config";
 
 let errorFn = status => {
   // 完整错误码参照koa2官网
@@ -26,9 +27,9 @@ let errorFn = status => {
 };
 
 // axios.post全局默认值 "application/x-www-form-urlencoded"
-const http = axios.create({
+export const http = axios.create({
   // 前后端同站点部署,相对路径,不同站点需要配置baseURL
-  baseURL: process.env.VUE_APP_BASE_URL,
+  baseURL: mockServer ? mockHost : process.env.VUE_APP_BASE_URL,
   timeout: 6000,
   validateStatus: function(status) {
     // 网络层异常: 监听http错误码处理
@@ -77,9 +78,9 @@ http.interceptors.response.use(
 );
 
 // 本地mock数据
-const mock = axios.create({
+export const mock = axios.create({
   baseURL: "http://127.0.0.1:3000",
   timeout: 60000
 });
 
-export default { http, mock };
+// export default { http, mock };

@@ -9,7 +9,8 @@
     "build:report": "npm run build --report",
     "build:zip": "npm run build && gulp zip",
     "build:ftp": "npm run build && gulp ftp",
-    "test": "jest"
+    "mock": "nodemon mock/app.js",
+    "test": "jest --runInBand --forceExit --colors"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
@@ -22,6 +23,7 @@
     "vuex": "^3.5.1"
   },
   "devDependencies": {
+    "@koa/cors": "^3.1.0",
     "@vue/cli-plugin-babel": "^4.5.3",
     "@vue/cli-plugin-eslint": "^4.5.3",
     "@vue/cli-plugin-router": "^4.5.3",

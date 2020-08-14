@@ -3,8 +3,8 @@
 </template>
 <script>
 // @ is an alias to /src
-import { http } from "../common/request";
-import { asyncWrap } from "../common/utils";
+// import { http } from "@/global/request";
+import { asyncWrap } from "@/global/utils/utils";
 import homeMethod from './home'
 export default {
   name: "Home",
@@ -15,11 +15,10 @@ export default {
     // await this.fetch();
     // console.log(1);
     // await asyncWrap();
-    this.hello(this)
+    let res = await this.$api.testUser()
+
     let [err, data] = await asyncWrap(
-      this.$api.testPost({
-        name: "123"
-      })
+      this.$api.testGet()
     );
     console.log("err: ", err);
   },
