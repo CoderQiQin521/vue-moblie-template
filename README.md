@@ -13,6 +13,7 @@
 7. restclient 接口测试
 8. tailwindcss
 9. px2rem 自动适配
+10. commitizen
 
 ## 提交规范
 
@@ -54,4 +55,3 @@
 - vw & postcss 适配
 - Event Bus
 - deploy
-- commitizen
