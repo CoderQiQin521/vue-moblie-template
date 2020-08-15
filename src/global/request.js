@@ -65,7 +65,6 @@ http.interceptors.request.use(
     //   config.headers["Authorization"] = "Bearer " + (token || "");
     // }
 
-    // TODO: RSA加密 最长30 GET需要截取处理
     if (mockServer) {
       if (openCrypto) {
         if (method === "get") {

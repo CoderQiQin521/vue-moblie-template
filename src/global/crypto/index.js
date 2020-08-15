@@ -14,9 +14,10 @@ let publicKey =
 let RAS_JM = val => {
   var encrypt = new JSEncrypt();
   encrypt.setPublicKey(publicKey);
-
-  let res = encrypt.encrypt(val);
-  if (!res) {
+  let res;
+  try {
+    res = encrypt.encrypt(val);
+  } catch (e) {
     res = encrypt.encryptLong(val);
   }
   return res;
