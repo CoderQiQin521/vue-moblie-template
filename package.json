@@ -9,6 +9,7 @@
     "build:report": "npm run build --report",
     "build:zip": "npm run build && gulp zip",
     "build:ftp": "npm run build && gulp ftp",
+    "git:commit": "git cz",
     "mock": "nodemon mock/app.js",
     "test": "jest --runInBand --forceExit --colors"
   },
