@@ -17,6 +17,11 @@ Object.keys(filters).forEach(key => {
 Vue.prototype.$api = api;
 Vue.config.productionTip = false;
 
+// 获取通配符参数
+function init() {
+  // TODO
+}
+
 // 小齿轮出现环境: 本地调试,线测,ab
 if (
   window.location.host.includes("192") ||
