@@ -7,3 +7,33 @@
 .ellipsis {
   @extend %ellipsis-basic;
 }
+.text-center {
+  text-align: center;
+}
+.text-primary {
+  color: $primary;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.padding-x {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page {
+  overflow: hidden;
+  min-height: 100%;
+  background-color: #fff;
+}

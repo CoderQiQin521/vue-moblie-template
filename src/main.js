@@ -7,6 +7,12 @@ import * as api from "./apis";
 // import "vant/lib/index.css";
 // import "./assets/style/tailwind.css";
 import "./assets/style/core.scss";
+import * as filters from "./global/filters";
+
+// 注册全局过滤器
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key]);
+});
 
 Vue.prototype.$api = api;
 Vue.config.productionTip = false;
