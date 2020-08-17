@@ -6,10 +6,10 @@ import { isPro, isDev } from "./env";
 import { mockServer, mockHost, openCrypto, openApiLog } from "@/global/config";
 import { unSerialize } from "./utils/utils";
 
-const token = util.Request("token");
-if (!token) {
-  uPop.msg("没有获取token");
-}
+// const token = util.Request("token");
+// if (!token) {
+//   uPop.msg("没有获取token");
+// }
 
 let errorFn = status => {
   // 完整错误码参照koa2官网
