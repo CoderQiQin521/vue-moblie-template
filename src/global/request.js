@@ -1,15 +1,12 @@
 // 文档: https://www.kancloud.cn/yunye/axios/234845
 import axios from "axios";
+import qs from 'qs';
 import crypto from "./crypto";
 import { util, uPop } from "@plugin/tool-common";
 import { isPro, isDev } from "./env";
 import { mockServer, mockHost, openCrypto, openApiLog } from "@/global/config";
-import { unSerialize } from "./utils/utils";
 
-// const token = util.Request("token");
-// if (!token) {
-//   uPop.msg("没有获取token");
-// }
+const token = util.Request("token");
 
 let errorFn = status => {
   // 完整错误码参照koa2官网
@@ -47,7 +44,7 @@ export const http = axios.create({
   //     return JSON.stringify(data);
   //   }
   // ],
-  validateStatus: function(status) {
+  validateStatus: function (status) {
     // 网络层异常: 监听http错误码处理
     if (!(status >= 200 && status < 300)) {
       errorFn(status);
@@ -65,10 +62,11 @@ http.interceptors.request.use(
     //   config.headers["Authorization"] = "Bearer " + (token || "");
     // }
 
-    if (mockServer) {
+    if (!mockServer) {
       if (openCrypto) {
         if (method === "get") {
-          url += `?${crypto(`token=${token}${params ? "&" + unSerialize(params) : ""}`)}`;
+          params.token = token
+          url += `?${crypto(qs.stringify(params))}`;
           config.url = url;
           config.params = null;
         } else {
@@ -101,6 +99,7 @@ http.interceptors.response.use(
   },
   err => {
     console.log("网络错误: ", err.message);
+    uPop.msg(err.message)
     return err;
   }
 );
