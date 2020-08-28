@@ -56,3 +56,5 @@
 - Event Bus
 - deploy
 - vuex-persistedstate 持久化
+- 装饰器 (防抖,节流)
+- 常用正则
