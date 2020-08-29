@@ -2,7 +2,7 @@
  * @Author: coderqiqin@aliyun.com
  * @Date: 2020-07-04 09:23:45
  * @Last Modified by: CoderQiQin
- * @Last Modified time: 2020-08-03 16:08:22
+ * @Last Modified time: 2020-08-29 19:55:39
  * vue-clie文档: https://cli.vuejs.org/zh/
  * postcss-px2rem: px自动转rem
  * CDN: 生产环境使用cdn资源
@@ -21,7 +21,7 @@ let cdn = {
     "https://uufefile.uupt.com/CDN/js/babel-polyfill.min.js",
     "https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js",
     "https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js",
-    "https://unpkg.com/vuex@3.1.2/dist/vuex.min.js",
+    "https://cdn.bootcdn.net/ajax/libs/vuex/3.2.0/vuex.js",
     "https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"
   ]
 };

@@ -1,10 +1,10 @@
 // 文档: https://www.kancloud.cn/yunye/axios/234845
 import axios from "axios";
 import qs from "qs";
-import crypto from "./crypto";
+import crypto from "@/utils/crypto";
 import { util, uPop } from "@plugin/tool-common";
-import { isPro, isDev } from "./env";
-import { mockServer, mockHost, openCrypto, openApiLog } from "@/common/config";
+import { isPro, isDev } from "@/config/env";
+import { mockServer, mockHost, openCrypto, openApiLog } from "@/config";
 
 const token = util.Request("token");
 
@@ -32,7 +32,7 @@ let errorFn = status => {
 
 // axios.post全局默认值 "application/x-www-form-urlencoded"
 // axios.defaults.headers.post["Content-Type"] = "application/json";
-export const http = axios.create({
+export const request = axios.create({
   // 前后端同站点部署,相对路径,不同站点需要配置baseURL
   baseURL: mockServer ? mockHost : process.env.VUE_APP_BASE_URL,
   timeout: 6000,
@@ -53,7 +53,7 @@ export const http = axios.create({
   }
 });
 
-http.interceptors.request.use(
+request.interceptors.request.use(
   config => {
     let { url, method, params, data } = config;
     // let token = localStorage.getItem("token");
@@ -82,7 +82,7 @@ http.interceptors.request.use(
   }
 );
 
-http.interceptors.response.use(
+request.interceptors.response.use(
   response => {
     let { config, data } = response;
     if (isDev && openApiLog) {
@@ -104,4 +104,4 @@ http.interceptors.response.use(
   }
 );
 
-export default http;
+export default request;

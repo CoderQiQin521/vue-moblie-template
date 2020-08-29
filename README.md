@@ -1,6 +1,6 @@
 ## 简介
 
-> 移动端项目模版
+> 移动端 vue 项目模版
 
 ## 特点
 
@@ -14,6 +14,13 @@
 8. tailwindcss
 9. px2rem 自动适配
 10. commitizen 规范 git 提交
+
+## 目录说明
+
+|--mock mock 服务器
+|--public 静态资源
+|--src 源码
+|--test 单元测试
 
 ## 提交规范
 
@@ -43,6 +50,7 @@
 `git tag onlinetest-v1.0.0`
 
 `git push --tag`
+.gitkeep 文件保持目录
 
 ## 依赖
 
@@ -52,9 +60,28 @@
 ## TODO
 
 - vue 打包配置线测环境-ab 环境-正式环境
-- vw & postcss 适配
+- vw & postcss 适配 postcss-px-to-viewport
 - Event Bus
 - deploy
 - vuex-persistedstate 持久化
 - 装饰器 (防抖,节流)
 - 常用正则
+
+```
+'postcss-px-to-viewport': {
+  // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
+  viewportWidth: 375,
+  // 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置
+  // viewportHeight: 1334,
+  // 指定`px`转换为视窗单位值的小数位数
+  unitPrecision: 3,
+  // 指定需要转换成的视窗单位，建议使用vw
+  viewportUnit: 'vw',
+  // 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名
+  selectorBlackList: ['.ignore'],
+  // 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值
+  minPixelValue: 1,
+  // 允许在媒体查询中转换`px`
+  mediaQuery: false
+}
+```

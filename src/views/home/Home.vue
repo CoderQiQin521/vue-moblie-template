@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>123</div>
 </template>
 <script>
 // @ is an alias to /src
-// import { http } from "@/common/request";
-import { asyncWrap } from "@/common/utils/utils";
+// import request from "@/service/request";
+import { asyncWrap } from "@/utils";
 import homeMethod from './home'
 export default {
   name: "Home",

@@ -14,6 +14,7 @@ let publicKey =
 let RAS_JM = val => {
   var encrypt = new JSEncrypt();
   encrypt.setPublicKey(publicKey);
+  // 加密过长字符串会报错返回false,使用long方法
   return encrypt.encrypt(val) || encrypt.encryptLong(val);
 };
 
