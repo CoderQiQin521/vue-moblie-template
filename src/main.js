@@ -7,7 +7,7 @@ import * as api from "./apis";
 // import "vant/lib/index.css";
 // import "./assets/style/tailwind.css";
 import "./assets/style/core.scss";
-import * as filters from "./global/filters";
+import * as filters from "./common/filters";
 
 // 注册全局过滤器
 Object.keys(filters).forEach(key => {
@@ -32,7 +32,7 @@ if (
 }
 console.log("环境变量:", process.env);
 
-import "@/global/version";
+import "@/common/version";
 
 new Vue({
   router,

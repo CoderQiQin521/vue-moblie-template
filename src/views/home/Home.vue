@@ -3,8 +3,8 @@
 </template>
 <script>
 // @ is an alias to /src
-// import { http } from "@/global/request";
-import { asyncWrap } from "@/global/utils/utils";
+// import { http } from "@/common/request";
+import { asyncWrap } from "@/common/utils/utils";
 import homeMethod from './home'
 export default {
   name: "Home",
