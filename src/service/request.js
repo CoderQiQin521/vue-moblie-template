@@ -2,11 +2,10 @@
 import axios from "axios";
 import qs from "qs";
 import crypto from "@/utils/crypto";
-import { util, uPop } from "@plugin/tool-common";
+import { uPop } from "@plugin/tool-common";
+import { token } from "@/common/const";
 import { isPro, isDev } from "@/config/env";
 import { mockServer, mockHost, openCrypto, openApiLog } from "@/config";
-
-const token = util.Request("token");
 
 let errorFn = status => {
   // 完整错误码参照koa2官网

@@ -1,8 +1,14 @@
 import request from "./request";
-// 通配符处理
+// 处理通配符
+import { token, city } from "../common/const";
 
-export const testGet = params => request.get("/", { params });
-export const testUser = params => request.get("/user", params);
+export const testGet = params =>
+  request.get("/", {
+    params: {
+      city,
+      ...params
+    }
+  });
 
 export const testPost = data => request.post("/a", data);
 

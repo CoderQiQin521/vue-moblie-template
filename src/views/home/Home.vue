@@ -12,8 +12,6 @@ export default {
     return {};
   },
   async created() {
-    let res = await this.$api.testUser()
-
     let po = await this.$api.testPost({
       name: 23322432332243233224323322432332243233224323322432332243233224323322432332243,
       age: "sdfgvsafsdfsdafdsafdsfasdfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -22,7 +20,7 @@ export default {
 
     let [err, data] = await asyncWrap(
       this.$api.testGet({
-        name: '齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323齐秦1齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦123齐秦12323',
+        name: '123',
         age:4
       })
     );
