@@ -54,18 +54,18 @@
 
 ## 依赖
 
-- [tailwindcss](https://www.tailwindcss.cn/)
-- [licia](https://licia.liriliri.io/docs.html)
+-   [tailwindcss](https://www.tailwindcss.cn/)
+-   [licia](https://licia.liriliri.io/docs.html)
 
 ## TODO
 
-- vue 打包配置线测环境-ab 环境-正式环境
-- vw & postcss 适配 postcss-px-to-viewport
-- Event Bus
-- deploy
-- vuex-persistedstate 持久化
-- 装饰器 (防抖,节流)
-- 常用正则
+-   vue 打包配置线测环境-ab 环境-正式环境
+-   vw & postcss 适配 postcss-px-to-viewport
+-   Event Bus
+-   deploy
+-   vuex-persistedstate 持久化
+-   装饰器 (防抖,节流)
+-   常用正则
 
 ```
 'postcss-px-to-viewport': {
@@ -85,3 +85,14 @@
   mediaQuery: false
 }
 ```
+
+## prettierrc
+
+与 eslint 集成 --dev eslint-plugin-prettier
+cli:命令行方式操作 prettierrc,通常配合 git hook 使用
+文件忽略 .prettierignore(语法同 gitignore)
+代码中忽略 // prettier-ignore
+
+参考: https://zhuanlan.zhihu.com/p/87586114\
+https://zhuanlan.zhihu.com/p/81764012?from_voters_page=true
+插件: https://github.com/prettier/prettier-vscode
