@@ -14,6 +14,7 @@
 8. tailwindcss
 9. px2rem 自动适配
 10. commitizen 规范 git 提交
+11. BetterScroll[文档](https://better-scroll.github.io/docs/zh-CN/plugins/)
 
 ## 目录说明
 
@@ -34,7 +35,6 @@
 8. ci: 更改 CI 配置文件和脚本
 9. chore: 不修改 src 或测试文件的修改
 10. revert: 恢复之前的提交
-11. BetterScroll[文档](https://better-scroll.github.io/docs/zh-CN/plugins/)
 
 ## 常用命令
 
