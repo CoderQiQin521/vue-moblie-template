@@ -1,8 +1,8 @@
 <template>
-  <div class="home text-center">
-    home
-    <div class="box"></div>
-  </div>
+    <div class="home text-center">
+        home
+        <div class="box"></div>
+    </div>
 </template>
 
 <script>
@@ -49,11 +49,11 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  font-size: 36px;
+    font-size: 36px;
 }
 .box {
-  width: 750px;
-  height: 750px;
-  background-color: pink;
+    width: 750px;
+    height: 750px;
+    background-color: pink;
 }
 </style>

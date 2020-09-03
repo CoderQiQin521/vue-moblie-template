@@ -5,37 +5,45 @@ import Home from "../views/home/Home.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    meta: {
-      title: "首页"
+    {
+        path: "/",
+        name: "Home",
+        meta: {
+            title: "首页",
+        },
+        component: Home,
     },
-    component: Home
-  }
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   meta: {
-  //     title: "关于我们"
-  //   },
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
+    {
+        path: "/scroll",
+        name: "Scroll",
+        meta: {
+            title: "Scroll",
+        },
+        component: () => import(/* webpackChunkName: "about" */ "../views/home/Scroll.vue"),
+    },
+    // {
+    //   path: "/about",
+    //   name: "About",
+    //   meta: {
+    //     title: "关于我们"
+    //   },
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import(/* webpackChunkName: "about" */ "../views/About.vue")
+    // }
 ];
 
 const router = new VueRouter({
-  mode: "hash",
-  base: process.env.BASE_URL,
-  routes
+    mode: "hash",
+    base: process.env.BASE_URL,
+    routes,
 });
 
 router.beforeEach((to, from, next) => {
-  let { title } = to.meta;
-  title && (document.title = title);
-  next();
+    let { title } = to.meta;
+    title && (document.title = title);
+    next();
 });
 
 export default router;

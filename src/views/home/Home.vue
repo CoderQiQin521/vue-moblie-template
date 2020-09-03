@@ -1,5 +1,5 @@
 <template>
-  <div>123</div>
+    <div>123{{ msg }}</div>
 </template>
 <script>
 // @ is an alias to /src
@@ -9,13 +9,13 @@ import homeMethod from './home'
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      msg: "阿瑟的"
+    };
   },
   async created() {
     let po = await this.$api.testPost({
-      name: 23322432332243233224323322432332243233224323322432332243233224323322432332243,
-      age: "sdfgvsafsdfsdafdsafdsfasdfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      password: '5435h34jjk345hjhjZ'
+      name: 23322432332243233224323322432332243233224323322432332243233224323322432332243,age: "sdfgvsafsdfsdafdsafdsfasdfdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",password: '5435h34jjk345hjhjZ'
     })
 
     let [err, data] = await asyncWrap(
