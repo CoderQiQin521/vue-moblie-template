@@ -11,7 +11,7 @@ import * as filters from "./common/filters";
 
 // 注册全局过滤器
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key]);
+    Vue.filter(key, filters[key]);
 });
 
 Vue.prototype.$api = api;
@@ -19,23 +19,23 @@ Vue.config.productionTip = false;
 
 // 获取通配符参数
 function init() {
-  // TODO
+    // TODO
 }
 
 // 小齿轮出现环境: 本地ip,线测,ab
 if (
-  window.location.host.includes("192") ||
-  window.location.host.includes(".test.") ||
-  window.location.host.includes("ab-")
+    window.location.host.includes("192") ||
+    window.location.host.includes(".test.") ||
+    window.location.host.includes("ab-")
 ) {
-  eruda.init();
+    eruda.init();
 }
 console.log("环境变量:", process.env);
 
 import "@/utils/version";
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App),
 }).$mount("#app");
