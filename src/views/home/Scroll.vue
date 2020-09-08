@@ -1,19 +1,17 @@
 <template>
-    <div class="pullup">
-        <div class="pullup-wrapper" ref="scroll">
-            <div class="pullup-content">
-                <ul class="pullup-list" ref="scroll">
-                    <li class="item" v-for="(item,index) in list" :key="index">
-                        <p>{{item}}</p>
-                    </li>
-                </ul>
-                <div class="pullup-tips">
-                    <div v-if="!isPullUpLoad" class="before-trigger">
-                        <span class="pullup-txt">上拉并加载更多</span>
-                    </div>
-                    <div v-else class="after-trigger">
-                        <span class="pullup-txt">Loading...</span>
-                    </div>
+    <div class="pullup-wrapper" ref="scroll">
+        <div class="pullup-content">
+            <ul class="pullup-list">
+                <li class="item" v-for="(item,index) in list" :key="index">
+                    <p>{{item}}</p>
+                </li>
+            </ul>
+            <div class="pullup-tips">
+                <div v-if="!isPullUpLoad" class="before-trigger">
+                    <span class="pullup-txt">{{beforeText}}</span>
+                </div>
+                <div v-else class="after-trigger">
+                    <span class="pullup-txt">Loading...</span>
                 </div>
             </div>
         </div>
@@ -30,6 +28,7 @@ export default {
     data() {
         return {
             list: [],
+            beforeText: "加载中",
             isPullUpLoad: false,
             pageNum: 0, // 当前页码
             pageSize: 20, // 每页数量
@@ -47,6 +46,7 @@ export default {
             this.bscroll = new BScroll(this.$refs.scroll, {
                 pullUpLoad: true, // 上拉加载
             });
+            this.beforeText = "上拉加载更多";
 
             this.bscroll.on("pullingUp", this.pullingUpHandle);
         },
@@ -95,28 +95,25 @@ ul {
     margin: 0;
     list-style: none;
 }
-.pullup {
+.pullup-wrapper {
     height: 100%;
-    .pullup-wrapper {
-        height: 100%;
-        padding: 0 10px;
-        border: 1px solid red;
-        overflow: hidden;
-    }
-    .pullup-list {
-        padding: 0;
-    }
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.pullup-list {
+    padding: 0;
+}
 
-    .pullup-tips {
-        padding: 20px;
-        text-align: center;
-        color: #999;
-    }
+.pullup-tips {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+}
 
-    .item {
-        line-height: 100px;
-        margin-bottom: 20px;
-        border: 1px solid #eee;
-    }
+.item {
+    line-height: 100px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
 }
 </style>
