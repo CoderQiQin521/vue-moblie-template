@@ -17,7 +17,7 @@
     "@better-scroll/pull-up": "^2.0.2",
     "@plugin/tool-common": "^1.4.8",
     "amfe-flexible": "^2.2.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "better-scroll": "^2.0.2",
     "core-js": "^3.6.4",
     "licia": "^1.24.0",
